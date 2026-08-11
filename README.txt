@@ -1,0 +1,1 @@
+Place public resume PDF/DOCX and approved project images here.
