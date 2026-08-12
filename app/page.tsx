@@ -1,7 +1,7 @@
 const metrics = [
-  ["110+", "Users Supported"],
-  ["120", "Microsoft 365 Users"],
-  ["39", "Sites Supported"],
+  ["110+", "Current Users Supported"],
+  ["120", "Microsoft 365 Accounts"],
+  ["39", "Multi-site Locations"],
   ["99.9%", "Service Availability"]
 ];
 
@@ -70,6 +70,13 @@ const caseStudies = [
     result: "Business operations restored from enterprise backups",
     body: "Recovered an entire department after a major infrastructure failure, using tested restore processes and disciplined recovery verification.",
     href: "/case-studies/disaster-recovery/"
+  },
+  {
+    tag: "WINDOWS SERVER · ACTIVE DIRECTORY",
+    title: "Active Directory Time Synchronisation",
+    result: "Domain time hierarchy restored and verified",
+    body: "Traced an Active Directory time-skew issue, corrected the authoritative time source and verified domain synchronisation using Windows Time diagnostics.",
+    href: "/case-studies/active-directory-time-sync/"
   }
 ];
 
@@ -172,7 +179,7 @@ export default function Home() {
         <div className="sectionLabel">SELECTED CASE STUDIES</div>
         <h3>Evidence behind the resume.</h3>
         <p className="sectionIntro">The strongest parts of my background are easier to understand as outcomes than as technology lists.</p>
-        <div className="grid2">
+        <div className="grid3">
           {caseStudies.map(c => (
             <a className="case caseLink" href={c.href} key={c.title}>
               <div className="tag">{c.tag}</div>

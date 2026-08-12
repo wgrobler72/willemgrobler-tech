@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,13 +30,13 @@ export const metadata: Metadata = {
     siteName: "Willem Grobler",
     locale: "en_ZA",
     type: "profile",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Willem Grobler - Senior Infrastructure Engineer" }]
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Willem Grobler - Senior Infrastructure Engineer" }]
   },
   twitter: {
     card: "summary_large_image",
     title: "Willem Grobler | Senior Infrastructure Engineer",
     description: "Microsoft 365 · Azure · Windows Server · Hyper-V · IT Operations",
-    images: ["/opengraph-image"]
+    images: ["/opengraph-image.png"]
   },
   robots: { index: true, follow: true }
 };
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en-ZA">
       <body>
         {children}
+        <Analytics />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </body>
     </html>
