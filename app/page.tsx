@@ -125,6 +125,7 @@ export default function Home() {
           <a href="#case-studies">Case Studies</a>
           <a href="#projects">Projects</a>
           <a href="/resume/">Resume</a>
+          <a href="/hire/">For Recruiters</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -138,9 +139,9 @@ export default function Home() {
         </p>
         <div className="availability"><span></span>Based in South Africa · Open to fully remote international opportunities</div>
         <div className="actions">
-          <a className="primary" href="/resume/">View Resume</a>
+          <a className="primary" href="/hire/">Recruiter Overview</a>
+          <a className="secondary" href="/resume/">View Resume</a>
           <a className="secondary" href="#case-studies">See Business Impact</a>
-          <a className="secondary" href="mailto:willemgrobler72@gmail.com">Email Me</a>
         </div>
         <div className="metrics">
           {metrics.map(([n,l]) => <div className="metric" key={l}><strong>{n}</strong><span>{l}</span></div>)}
@@ -234,7 +235,7 @@ export default function Home() {
         </div>
         <div className="actions">
           <a className="primary" href="mailto:willemgrobler72@gmail.com?subject=Remote%20IT%20Opportunity">Discuss an Opportunity</a>
-          <a className="secondary" href="/resume/">View Resume</a>
+          <a className="secondary" href="/hire/">Recruiter Overview</a>
           <a className="secondary" href="https://www.linkedin.com/in/willem-grobler-b17746347" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </section>
