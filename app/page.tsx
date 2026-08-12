@@ -5,6 +5,15 @@ const metrics = [
   ["99.9%", "Service Availability"]
 ];
 
+const strengths = [
+  ["Hands-on seniority", "I still work directly with Windows Server, Microsoft 365, Hyper-V, backups, networking and difficult technical incidents."],
+  ["Operational ownership", "My role extends beyond administration into budgets, vendors, licensing, staff supervision, lifecycle planning and business continuity."],
+  ["MSP perspective", "I have supported multiple customer environments with different priorities, technical estates and service expectations."],
+  ["Recovery experience", "I have restored an entire department from enterprise backups after a major infrastructure failure."],
+  ["Microsoft cloud", "I administer Microsoft 365, Azure, Entra ID, Intune, Defender, MFA and Conditional Access in production environments."],
+  ["Remote-ready", "I am based in South Africa and specifically targeting fully remote international infrastructure and IT operations roles."]
+];
+
 const expertise = [
   ["Microsoft Cloud", "Microsoft 365, Azure, Exchange Online, Teams, SharePoint Online and OneDrive"],
   ["Identity & Endpoint", "Entra ID, Intune, MFA, Conditional Access and Microsoft Defender"],
@@ -44,15 +53,6 @@ const experience = [
       "Administered Windows Server, Office 365, Hyper-V, VMware, firewalls and backup solutions across MSP customer environments.",
       "Provided technical leadership to a team of approximately 10 people while remaining hands-on with escalated technical work."
     ]
-  },
-  {
-    period: "2014 — 2015",
-    role: "Helpdesk Manager & Technical Lead",
-    company: "Enabling Solutions",
-    points: [
-      "Managed IT support for approximately 450 Limpopo Department of Health users across 39 geographically distributed sites.",
-      "Led ticket prioritisation, escalations, SLA delivery and infrastructure support across sites with typically 2 to 8 servers each."
-    ]
   }
 ];
 
@@ -70,27 +70,30 @@ const caseStudies = [
     result: "Business operations restored from enterprise backups",
     body: "Recovered an entire department after a major infrastructure failure, using tested restore processes and disciplined recovery verification.",
     href: "/case-studies/disaster-recovery/"
-  },
-  {
-    tag: "MULTI-SITE IT",
-    title: "39-Site Government Support",
-    result: "Approximately 450 users across 39 locations",
-    body: "Managed distributed support operations, escalations and infrastructure service delivery across geographically separated sites."
-  },
-  {
-    tag: "AEROSPACE IT",
-    title: "Business-Critical Infrastructure",
-    result: "Close to 99.9% service availability",
-    body: "Lead day-to-day IT operations in an aerospace and manufacturing environment where infrastructure availability directly affects operations."
   }
 ];
 
 const projects = [
-  ["Grovoris", "IT service-management platform project covering ticketing, CMDB, asset discovery, service workflows and knowledge capture."],
-  ["Knowledge Capture", "Standalone project designed to turn resolved IT support tickets into reviewed, searchable knowledge articles."],
-  ["Remote IT Engineer", "Infrastructure analysis and reporting project for Windows, Microsoft 365, backups, Active Directory and operational health."],
-  ["Quality Operations Dashboard", "Read-only operational dashboard for calibration, NCR and approved-supplier visibility."],
-  ["Windows Server File Search", "Local-first file discovery project designed to search multiple server drives and network locations without sending file data outside the network."]
+  {
+    name: "Grovoris",
+    body: "IT service-management platform covering ticketing, CMDB, asset discovery, service workflows and knowledge capture.",
+    href: "https://github.com/wgrobler72/grovoris-platform"
+  },
+  {
+    name: "Quality Operations Dashboard",
+    body: "Read-only operational dashboard for calibration, NCR and approved-supplier visibility.",
+    href: "https://github.com/wgrobler72/quality-operations-dashboard"
+  },
+  {
+    name: "PAI Quality Dashboard",
+    body: "Dashboard work focused on operational quality visibility and spreadsheet-backed reporting.",
+    href: "https://github.com/wgrobler72/pai-quality-dashboard"
+  },
+  {
+    name: "GitHub Portfolio",
+    body: "Additional infrastructure, automation and application projects.",
+    href: "https://github.com/wgrobler72"
+  }
 ];
 
 const certs = [
@@ -111,9 +114,10 @@ export default function Home() {
         <a className="brand" href="#top" aria-label="Willem Grobler home">WG</a>
         <nav>
           <a href="#about">About</a>
-          <a href="#experience">Experience</a>
+          <a href="#why-hire-me">Why Me</a>
           <a href="#case-studies">Case Studies</a>
           <a href="#projects">Projects</a>
+          <a href="/resume/">Resume</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -127,7 +131,7 @@ export default function Home() {
         </p>
         <div className="availability"><span></span>Based in South Africa · Open to fully remote international opportunities</div>
         <div className="actions">
-          <a className="primary" href="/Willem-Grobler-Senior-Infrastructure-Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+          <a className="primary" href="/resume/">View Resume</a>
           <a className="secondary" href="#case-studies">See Business Impact</a>
           <a className="secondary" href="mailto:willemgrobler72@gmail.com">Email Me</a>
         </div>
@@ -148,7 +152,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section alt">
+      <section id="why-hire-me" className="section alt">
+        <div className="sectionLabel">WHY HIRE ME</div>
+        <h3>What I bring to a remote infrastructure team.</h3>
+        <div className="grid3">
+          {strengths.map(([title, body]) => <article className="card strengthCard" key={title}><h4>{title}</h4><p>{body}</p></article>)}
+        </div>
+      </section>
+
+      <section className="section">
         <div className="sectionLabel">TECHNICAL EXPERTISE</div>
         <h3>Microsoft-first infrastructure, backed by real operations experience.</h3>
         <div className="grid3">
@@ -156,24 +168,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="case-studies" className="section">
+      <section id="case-studies" className="section alt">
         <div className="sectionLabel">SELECTED CASE STUDIES</div>
         <h3>Evidence behind the resume.</h3>
         <p className="sectionIntro">The strongest parts of my background are easier to understand as outcomes than as technology lists.</p>
         <div className="grid2">
-          {caseStudies.map(c => c.href ? (
+          {caseStudies.map(c => (
             <a className="case caseLink" href={c.href} key={c.title}>
-              <div className="tag">{c.tag}</div><h4>{c.title}</h4><strong className="result">{c.result}</strong><p>{c.body}</p><span className="readMore">Read case study →</span>
+              <div className="tag">{c.tag}</div>
+              <h4>{c.title}</h4>
+              <strong className="result">{c.result}</strong>
+              <p>{c.body}</p>
+              <span className="readMore">Read case study →</span>
             </a>
-          ) : (
-            <article className="case" key={c.title}>
-              <div className="tag">{c.tag}</div><h4>{c.title}</h4><strong className="result">{c.result}</strong><p>{c.body}</p>
-            </article>
           ))}
         </div>
       </section>
 
-      <section id="experience" className="section alt">
+      <section id="experience" className="section">
         <div className="sectionLabel">EXPERIENCE</div>
         <h3>From technical support to infrastructure leadership.</h3>
         <div className="timeline">
@@ -184,31 +196,39 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <div className="projectCta"><a className="secondary" href="/resume/">View Full Resume</a></div>
       </section>
 
-      <section id="projects" className="section">
+      <section id="projects" className="section alt">
         <div className="sectionLabel">PROJECTS</div>
         <h3>Using AI and modern tooling to solve practical IT problems.</h3>
-        <p className="sectionIntro">Working projects and product concepts built around problems I have encountered in IT operations, service management and reporting.</p>
-        <div className="projectList">{projects.map(([name, body]) => <article className="project" key={name}><h4>{name}</h4><p>{body}</p></article>)}</div>
-        <div className="projectCta"><a className="secondary" href="https://github.com/wgrobler72" target="_blank" rel="noreferrer">View GitHub Profile</a></div>
+        <p className="sectionIntro">Selected projects built around service management, infrastructure operations, reporting and knowledge capture.</p>
+        <div className="projectCards">
+          {projects.map(p => (
+            <a className="projectCard" href={p.href} target="_blank" rel="noreferrer" key={p.name}>
+              <h4>{p.name}</h4><p>{p.body}</p><span>View project →</span>
+            </a>
+          ))}
+        </div>
       </section>
 
-      <section className="section alt">
+      <section className="section">
         <div className="sectionLabel">CERTIFICATIONS</div>
         <h3>Technical foundations built over a long IT career.</h3>
         <div className="chips">{certs.map(c => <span key={c}>{c}</span>)}</div>
       </section>
 
-      <section id="contact" className="section contact">
+      <section id="contact" className="section contact conversion">
         <div className="sectionLabel">CONTACT</div>
-        <h3>Looking for a senior remote infrastructure professional?</h3>
-        <p>I’m open to fully remote international opportunities in senior infrastructure engineering, Microsoft 365/Azure, MSP engineering and IT operations.</p>
+        <h3>Need someone who can own the problem and still do the technical work?</h3>
+        <p>I’m available for fully remote international roles in senior infrastructure engineering, Microsoft 365/Azure, MSP engineering and IT operations.</p>
+        <div className="contactFacts">
+          <span>South Africa based</span><span>Remote international</span><span>Microsoft infrastructure</span><span>MSP experience</span>
+        </div>
         <div className="actions">
-          <a className="primary" href="mailto:willemgrobler72@gmail.com">Email Willem</a>
-          <a className="secondary" href="/Willem-Grobler-Senior-Infrastructure-Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+          <a className="primary" href="mailto:willemgrobler72@gmail.com?subject=Remote%20IT%20Opportunity">Discuss an Opportunity</a>
+          <a className="secondary" href="/resume/">View Resume</a>
           <a className="secondary" href="https://www.linkedin.com/in/willem-grobler-b17746347" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a className="secondary" href="https://github.com/wgrobler72" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </section>
 
